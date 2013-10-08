@@ -34,18 +34,19 @@
 
 @implementation KSLabel
 
--(id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
 	
 	if (self) {
 		self.backgroundColor = [UIColor clearColor];
+        self.outlineWidth = 1.f;
 	}
     
     return self;
 }
 
 
--(void) setGradientColors: (CGFloat [8]) colors {
+- (void)setGradientColors: (CGFloat [8])colors{
 	memcpy(gradientColors, colors, 8 * sizeof (CGFloat));
 }
 
@@ -98,7 +99,7 @@
 		alphaMask = CGBitmapContextCreateImage(context);
 		
 		// Outline width
-		CGContextSetLineWidth(context, 4);
+		CGContextSetLineWidth(context, self.outlineWidth);
 		CGContextSetLineJoin(context, kCGLineJoinRound);
 		
 		// Set the drawing method to stroke
@@ -124,4 +125,5 @@
 		self.textColor = tmpColor;
 	}
 }
+
 @end
